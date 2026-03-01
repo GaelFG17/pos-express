@@ -5,6 +5,7 @@ const { connectDb } = require('./data/config');
 const productRouter = require('./routes/productsRoutes');
 const userRoutes = require("./route/User.routes");
 const salesRoutes = require('./route/Sales.routes');
+const loginRoutes = require('./route/login.Route');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -17,6 +18,8 @@ connectDb();
 app.use('/api/v1/products', productRouter);
 app.use("/users", userRoutes);
 app.use("/api/v1/sales", salesRoutes);
+app.use("/api/v1/auth", loginRoutes);
+
 
 app.listen(PORT, () => console.log(`Servidor en puerto ${PORT}`));
 
