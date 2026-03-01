@@ -12,7 +12,7 @@ const requireAdmin = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (decoded.role !== 'admin') {
+        if (decoded.rol !== 'admin') {
             return res.status(403).json({ message: 'Prohibido: Se requieren permisos de administrador' });
         }
 
