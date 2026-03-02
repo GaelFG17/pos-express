@@ -1,1 +1,0 @@
-Aqui en esta carpeta van los modelos de la bd a usar (tablas)

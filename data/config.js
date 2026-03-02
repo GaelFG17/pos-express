@@ -18,6 +18,7 @@ const connectDb = async () => {
         await sequelize.authenticate();
         await sequelize.sync(); 
         console.log("conectado yupiiii :3");
+        
     } catch (error) {
         console.error("error esta mal :c", error);
     }
