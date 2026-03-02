@@ -75,8 +75,8 @@ class UserController {
     async updatePassword(req, res) {
         try {
             const { id } = req.params;
-            const { password_hash } = req.body;
-            const [rows] = await this.service.updatePassword(id, password_hash);
+            const { password } = req.body;
+            const [rows] = await this.service.updatePassword(id, password);
             if (rows > 0) {
                 res.json({ message: 'Password updated' });
             } else {

@@ -8,20 +8,20 @@ class User extends Model {
 
     static async obtenerPorId(id) {
         return this.findByPk(id, {
-            attributes: ['id', 'nombre', 'usuario', 'rol', 'activo', 'creado_en']
+            attributes: ['id', 'nombre', 'usuario', 'rol', 'activo']
         });
     }
 
     static async obtenerPorUsuario(usuario) {
         return this.findOne({
             where: { usuario },
-            attributes: ['id', 'nombre', 'usuario', 'password_hash', 'rol', 'activo', 'creado_en']
+            attributes: ['id', 'nombre', 'usuario', 'password_hash', 'rol', 'activo']
         });
     }
 
     static async obtenerTodos() {
         return this.findAll({
-            attributes: ['id', 'nombre', 'usuario', 'rol', 'activo', 'creado_en']
+            attributes: ['id', 'nombre', 'usuario', 'rol', 'activo']
         });
     }
 

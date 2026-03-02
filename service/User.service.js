@@ -1,4 +1,5 @@
 const User = require("../model/User.model");
+const bcrypt = require('bcrypt');
 
 class UserService {
     // no necesitamos instanciar la clase Sequelize; usamos sus métodos estáticos
@@ -16,7 +17,8 @@ class UserService {
 
     async create(data) {
         try {
-            const { nombre, usuario, password_hash, rol } = data;
+            const { nombre, usuario, password, rol } = data;
+            const password_hash = await bcrypt.hash(password, 10);
             return await User.crear(nombre, usuario, password_hash, rol);
         } catch (error) {
             console.error('Error en UserService.create:', error);
@@ -54,8 +56,9 @@ class UserService {
         }
     }
 
-    async updatePassword(id, password_hash) {
+    async updatePassword(id, password) {
         try {
+            const password_hash = await bcrypt.hash(password, 10);
             return await User.actualizarPassword(id, password_hash);
         } catch (error) {
             console.error('Error en UserService.updatePassword:', error);
