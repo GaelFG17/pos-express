@@ -25,8 +25,8 @@ class SalesController {
     static async crearVenta(req, res){
         try{
             const userId = req.user.id;
-            const { total, descuento_total, metodo_pago, pagado_en, carrito } = req.body;
-            const nuevaVenta = await SalesService.crearVenta({ user_id: userId, total, descuento_total, metodo_pago, pagado_en, carrito });
+            const { total, descuento_total, metodo_pago, pagado_en, referencia, carrito } = req.body;
+            const nuevaVenta = await SalesService.crearVenta({ user_id: userId, total, descuento_total, metodo_pago, pagado_en, referencia, carrito });
             res.status(201).json(nuevaVenta);
         }catch(error){
             res.status(500).json({ 
