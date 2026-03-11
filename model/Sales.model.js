@@ -1,6 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const { sequelize } = require('../data/config');
 const User = require('./User.model');
+const Payments = require('./Payments.model');
 
 class Sales extends Model {}
 
@@ -27,5 +28,9 @@ Sales.init(
 // Relación vital para poder traer los datos del cajero junto con la venta
 Sales.belongsTo(User, { foreignKey: 'user_id', as: 'cajero' });
 User.hasMany(Sales, { foreignKey: 'user_id', as: 'ventas' });
+
+// Un pago (o varios en caso de pagos divididos) se almacena conectándolo con la venta
+Sales.hasMany(Payments, { foreignKey: 'sale_id', as: 'pagos' });
+Payments.belongsTo(Sales, { foreignKey: 'sale_id', as: 'venta' });
 
 module.exports = { Sales };
