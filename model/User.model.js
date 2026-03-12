@@ -67,11 +67,13 @@ User.init(
             defaultValue: 1
         }
     },
-    {
+{
         sequelize,
         modelName: 'User',
         tableName: 'users',
-        timestamps: false
+        timestamps: true, // Cambia a true para que existan las fechas
+        createdAt: 'creado_en', // Define el nombre que esperas
+        updatedAt: false
     }
 );
 

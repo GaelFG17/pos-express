@@ -10,21 +10,17 @@ const installRoutes = require('./route/Install.routes');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 
-connectDb();
-
-// Rutas
+app.use("/install", installRoutes);
 app.use('/api/v1/products', productRouter);
 app.use("/users", userRoutes);
 app.use("/api/v1/sales", salesRoutes);
 app.use("/api/v1/auth", loginRoutes);
-app.use('/api/v1/install', installRoutes);
-
-
-app.listen(PORT, () => console.log(`Servidor en puerto ${PORT}`));
 
 app.listen(PORT, () => {
-  console.log(`Servidor furulando en http://localhost:${PORT}`);
+    console.log(`🚀 Servidor en http://localhost:${PORT}`);
+    connectDb().catch(() => {});
 });

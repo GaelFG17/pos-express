@@ -1,6 +1,7 @@
-const router = require('express').Router();
-const { InstallController } = require('../controller/installController');
+const express = require('express');
+const router = express.Router();
+const { installSystem } = require('../controller/install.Controller');
 
-router.get('/', InstallController.install);
+router.get('/', installSystem);
 
 module.exports = router;
